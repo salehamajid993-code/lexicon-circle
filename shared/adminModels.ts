@@ -1,0 +1,12 @@
+export type ContentStatus = "DRAFT" | "REVIEW" | "PUBLISHED" | "DISABLED" | "ARCHIVED";
+export type EtymologyStatus = "DRAFT" | "REVIEW" | "APPROVED" | "PUBLISHED" | "ARCHIVED";
+export type AdminSection = "dashboard" | "games" | "questions" | "vocabulary" | "etymology" | "writing-prompts" | "featured" | "videos" | "programs" | "camps" | "testimonials" | "faqs" | "points" | "levels" | "badges" | "rewards" | "children" | "settings";
+export type AdminAuditAction = "CREATE" | "UPDATE" | "PUBLISH" | "UNPUBLISH" | "DISABLE" | "ARCHIVE" | "CONFIGURE";
+export type AdminAuditEvent = { id: string; adminAccountId: string; action: AdminAuditAction; entity: string; entityId: string; createdAt: string };
+export type AdminContentRecord = { id: string; title: string; status: ContentStatus; updatedAt: string; publishedAt?: string; version: number };
+export type AdminDashboardMetrics = { activeGames: number | null; gameAttempts: number | null; writingSubmissions: number | null; assessmentsPending: number | null; publishedPrompts: number | null; featuredContent: number | null; activePrograms: number | null; activeCamps: number | null; testimonials: number | null; parentAccounts: number | null; childProfiles: number | null };
+export type PointConfiguration = { id: string; correctAnswerPoints: number; gameCompletionPoints: number; writingChallengePoints: number; bonusPoints: number; version: number; updatedAt: string };
+export type LevelConfiguration = { id: string; levelNumber: number; name: string; requiredPoints: number; enabled: boolean; version: number };
+export type BadgeConfiguration = { id: string; name: string; description: string; icon: string; unlockCondition: { type: "FIRST_GAME" | "GAMES_COMPLETED" | "WRITING_SUBMISSIONS" | "POINTS_THRESHOLD" | "CATEGORY_COMPLETION"; value: number | string }; enabled: boolean; version: number };
+export type RewardConfiguration = { id: string; title: string; description: string; pointsRequired: number; enabled: boolean; redemptionEnabled: boolean; redemptionInstructions?: string };
+export type AdminApiError = { code: "ADMIN_NOT_CONFIGURED" | "UNAUTHORIZED" | "FORBIDDEN" | "INVALID_INPUT" | "NOT_FOUND" | "CONFLICT"; message: string };

@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --primary: #f58f82;
+  --primary-foreground: #263238;
+  --radius: 1.25rem;
+  --background: #fff9e8;
+  --foreground: #263238;
+  --card: #fffdf5;
+  --card-foreground: #263238;
+  --popover: #fffdf5;
+  --popover-foreground: #263238;
+  --secondary: #f4efe0;
+  --secondary-foreground: #53636a;
+  --muted: #f5efdf;
+  --muted-foreground: #6d7b80;
+  --accent: #f9d96b;
+  --accent-foreground: #263238;
+  --destructive: #c85a50;
+  --destructive-foreground: #fff9e8;
+  --border: #e8ddc6;
+  --input: #ddd1b9;
+  --ring: #f58f82;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Nunito", ui-sans-serif, system-ui, sans-serif;
+    background-image: radial-gradient(rgba(38,50,56,.045) .7px, transparent .7px);
+    background-size: 8px 8px;
+  }
+  ::selection { background: #f9d96b; color: #263238; }
+  h1, h2, h3, h4, h5, h6 { font-family: "Fraunces", Georgia, serif; letter-spacing: -0.035em; }
+  a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+  button:not(:disabled), a[href], select:not(:disabled), input:not(:disabled), textarea:not(:disabled) { cursor: pointer; }
+}
+
+@layer components {
+  .container { width: 100%; margin-inline: auto; padding-inline: 1rem; }
+  @media (min-width: 640px) { .container { padding-inline: 1.5rem; } }
+  @media (min-width: 1024px) { .container { max-width: 1280px; padding-inline: 2rem; } }
+  .focus-ring:focus-visible { outline: 3px solid #8fd3e8; outline-offset: 4px; }
+  .story-card { background: rgba(255,253,245,.78); border: 1px solid rgba(232,221,198,.9); box-shadow: 0 20px 55px rgba(74,66,45,.08); }
+  .paper-lines { background-image: linear-gradient(rgba(38,50,56,.06) 1px, transparent 1px); background-size: 100% 2rem; }
+  .float-gently { animation: float-gently 6s ease-in-out infinite; }
+  .float-gently-delayed { animation: float-gently 7s 1.1s ease-in-out infinite; }
+  .page-transition { animation: page-enter 240ms cubic-bezier(.23,1,.32,1) both; }
+  .quiz-step-enter { animation: quiz-step-enter 220ms cubic-bezier(.23,1,.32,1) both; }
+  .quiz-result-enter { animation: quiz-result-enter 260ms cubic-bezier(.23,1,.32,1) both; }
+  .marquee-line { border-top: 1px solid rgba(38,50,56,.13); border-bottom: 1px solid rgba(38,50,56,.13); }
+  @keyframes float-gently { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+  @keyframes page-enter { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes quiz-step-enter { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes quiz-result-enter { from { opacity: 0; transform: scale(.98) translateY(6px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .float-gently, .float-gently-delayed, .page-transition, .quiz-step-enter, .quiz-result-enter { animation: none; }
+    *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  }
+}
