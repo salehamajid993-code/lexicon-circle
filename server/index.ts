@@ -50,6 +50,8 @@ async function startServer() {
   app.use(express.static(staticPath));
   app.get("*", (_req, res) => res.sendFile(path.join(staticPath, "index.html")));
   const port = process.env.PORT || 3000;
-  server.listen(port, () => console.log(`Server running on http://localhost:${port}/`));
+  server.listen(Number(port), "0.0.0.0", () => {
+  console.log(`Server running on http://0.0.0.0:${port}/`);
+});
 }
 startServer().catch(console.error);
