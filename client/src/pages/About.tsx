@@ -16,7 +16,7 @@ export default function About() {
             />
           </div>
           <div className="founder-info max-w-lg">
-            <h3 className="text-2xl font-bold">Founder Name</h3>
+            <h3 className="text-2xl font-bold">Zeb Rahman</h3>
             <p className="text-muted-foreground text-sm mb-2">Founder & Director</p>
             <p className="text-base">
               Short message or bio about the founder goes here.
