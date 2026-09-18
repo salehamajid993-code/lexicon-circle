@@ -19,7 +19,9 @@ export default function About() {
             <h3 className="text-2xl font-bold">Zeb Rahman</h3>
             <p className="text-muted-foreground text-sm mb-2">Founder & Director</p>
             <p className="text-base">
-              Short message or bio about the founder goes here.
+              Zeb Rahman is the Founder & Director of The Lexicon Circle, dedicated to
+  nurturing young readers and helping children discover the joy of reading,
+  vocabulary, grammar, and creative writing.
             </p>
           </div>
         </div>
